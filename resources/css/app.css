@@ -1,0 +1,549 @@
+@import url(fonts/fonts.css);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* sizes */
+    --4px: 0.25rem;
+    --8px: 0.5rem;
+    --12px: 0.75rem;
+    --14px: 0.875rem;
+    --16px: 1rem;
+    --20px: 1.25rem;
+    --24px: 1.5rem;
+    --32px: 2rem;
+    --48px: 3rem;
+    --64px: 4rem;
+    --96px: 6rem;
+    --150px: 9.375rem;
+
+    --default-size: 16px;
+
+    --font-size-smallest: 0.75rem;
+    /* 12px */
+    --font-size-small: 0.875rem;
+    /* 14px */
+    --font-size-default: 1rem;
+    /* 16px */
+    --font-size-medium: 1.25rem;
+    /* 20px */
+    --font-size-large: 1.5rem;
+    /* 24px */
+    --font-size-xlarge: 2rem;
+    /* 32px */
+    --font-size-largest: 3rem;
+    /* 48px */
+
+    --font-weight-thin: 300;
+    --font-weight-regular: 400;
+    --font-weight-semi-bold: 700;
+    --font-weight-bold: 900;
+
+    --spacing-samallest: 0.25rem;
+    /* 4px */
+    --spacing-small: 0.5rem;
+    /* 8px */
+    --spacing-default: 1rem;
+    /* 16px */
+    --spacing-medium: 1.5rem;
+    /* 24px */
+    --spacing-large: 2rem;
+    /* 32px */
+    --spacing-xlarge: 3rem;
+    /* 48px */
+    --spacing-largest: 4rem;
+    /* 64px */
+    --spacing-huge: 6rem;
+    /* 96px */
+    --spacing-giant: 9.375rem;
+    /* 150px */
+
+    /* breaking points */
+    --bp-sm: 640px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+    --bp-2xl: 1440px;
+
+    --montserrat-font-family: "Montserrat", sans-serif, Tahoma;
+    --hind-madurai-font-family: "Hind Madurai", sans-serif, Tahoma;
+
+    --color-white: #ffffff;
+    --color-light-blue: #7096df;
+    --color-dark-grayish-green: #343f4b;
+    --color-darkest: #2e3033;
+    --color-light-gray: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--montserrat-font-family);
+    }
+
+    p,
+    a {
+        font-family: var(--hind-madurai-font-family);
+    }
+}
+
+.container {
+    padding-right: 9.063rem;
+    padding-left: 9.063rem;
+    max-width: var(--bp-2xl);
+    @apply w-full mx-auto;
+}
+
+/* components */
+.btn-default-white {
+    font-family: var(--montserrat-font-family);
+    background-color: var(--color-white);
+    width: max-content;
+    color: var(--color-darkest);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.094rem;
+
+    @apply uppercase py-4 px-8 rounded-lg justify-self-end;
+}
+
+.btn-default-dark {
+    font-family: var(--montserrat-font-family);
+    background-color: var(--color-darkest);
+    width: max-content;
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.094rem;
+
+    @apply uppercase py-4 px-8 rounded-lg justify-self-end;
+}
+
+.btn-link {
+    color: var(--color-light-blue);
+    font-size: var(--font-size-default);
+    font-weight: var(--font-weight-semi-bold);
+
+    transition: all 0.3s ease-in-out;
+
+    svg {
+        height: var(--12px);
+        margin-left: var(--spacing-small);
+    }
+
+    @apply no-underline;
+}
+
+/* default formatting */
+h2 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-large);
+}
+
+p {
+    font-size: var(--font-size-default);
+    margin-bottom: var(--spacing-medium);
+}
+
+body {
+    font-family: var(--default-size);
+
+    nav {
+        background-color: var(--color-white);
+        height: 70px;
+
+        .container {
+            @apply md:flex justify-between items-center h-full;
+
+            .logo {
+                @apply p-2 h-full;
+
+                img {
+                    @apply h-full w-auto;
+                }
+            }
+
+            .menu {
+                /* set a horizontal menu */
+                @apply flex flex-row items-center h-full gap-4;
+
+                a {
+                    color: var(--color-darkest);
+                    font-weight: var(--font-weight-semi-bold);
+                    font-family: var(--montserrat-font-family);
+                    font-size: var(--font-size-default);
+
+                    @apply no-underline uppercase;
+                }
+            }
+        }
+    }
+
+    header {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url("/public/images/grupo-mentor-banner-large.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        height: calc(100vh - 70px);
+
+        @apply grid grid-cols-1 justify-items-end items-end;
+
+        .container {
+            margin-bottom: 12rem;
+
+            @apply grid grid-cols-1 justify-items-end items-center h-80;
+
+            .header-content {
+                width: 100%;
+                max-width: 29.375rem;
+
+                @apply grid grid-cols-1 gap-8;
+
+                h1 {
+                    font-size: var(--font-size-largest);
+                    font-weight: var(--font-weight-bold);
+                    color: var(--color-white);
+
+                    @apply uppercase text-right;
+                }
+
+                p {
+                    font-size: var(--font-size-large);
+                    color: var(--color-white);
+                    max-width: 25.063rem;
+                    justify-self: end;
+
+                    @apply text-right;
+
+                    &.subtitle {
+                        font-size: var(--font-size-xlarge);
+                        font-weight: var(--font-weight-bold);
+                        max-width: 29.813rem;
+                        line-height: 2.3rem;
+                        @apply uppercase;
+                    }
+                }
+            }
+        }
+    }
+
+    #esocial {
+        background-color: var(--color-darkest);
+
+        .container {
+            display: grid;
+            min-height: 46.74rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-giant);
+            align-items: start;
+            padding-top: var(--spacing-huge);
+            padding-bottom: var(--spacing-huge);
+            background-image: url("/public/images/mentor-logo-background.png");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: auto 100%;
+
+            .advantages {
+                display: grid;
+                grid-template-areas:
+                    "advantage-1 advantage-2"
+                    "grafic advantage-3";
+                gap: var(--spacing-medium);
+                width: 100%;
+                max-width: 28.625rem;
+
+                .advantage {
+                    border-radius: var(--8px);
+                    background-color: var(--color-white);
+                    display: grid;
+                    grid-template-rows: auto 1fr auto;
+                    min-height: 18.625rem;
+                    width: 13.5625rem;
+
+                    h3 {
+                        font-weight: var(--font-weight-bold);
+                        /* font-size 18px in rem unit */
+                        font-size: var(--font-size-default);
+                    }
+
+                    p {
+                        margin-top: var(--spacing-medium);
+                    }
+
+                    &:nth-child(1) {
+                        grid-area: advantage-1;
+                    }
+
+                    &:nth-child(2) {
+                        grid-area: advantage-2;
+                    }
+
+                    &:nth-child(3) {
+                        grid-area: advantage-3;
+                    }
+
+                    @apply p-4;
+                }
+
+                img {
+                    margin-top: -0.5rem;
+                    margin-right: -0.5rem;
+                    grid-area: grafic;
+                    justify-self: end;
+                }
+            }
+
+            .content {
+
+                h2,
+                p {
+                    color: var(--color-white);
+                }
+
+                h2 {
+                    font-size: 1.75rem;
+                    font-weight: var(--font-weight-bold);
+                    margin-bottom: var(--spacing-large);
+                }
+
+                p {
+                    margin-bottom: var(--spacing-medium);
+                    font-size: 1.125rem;
+                }
+
+                h3 {
+                    color: var(--color-white);
+                    font-size: var(--font-size-default);
+                    font-weight: var(--font-weight-semi-bold);
+                    margin-bottom: var(--spacing-small);
+                }
+
+                ul {
+                    li {
+                        color: var(--color-white);
+                    }
+
+                    @apply m-0 list-none;
+                }
+
+                button {
+                    @apply uppercase mt-12;
+                }
+            }
+
+            @apply h-full;
+        }
+    }
+
+    #our-plans {
+        background-image: url("/public/images/grupo-mentor-banner-nossos-planos.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: end;
+            min-height: 58.188rem;
+            padding-top: var(--spacing-huge);
+            padding-bottom: var(--spacing-huge);
+
+            .plans-container {
+                width: 100%;
+                max-width: 42.75rem;
+
+                .content {
+                    max-width: 35.375rem;
+
+                    h2,
+                    p {
+                        color: var(--color-white);
+                    }
+
+                    h2 {
+                        font-size: var(--font-size-large);
+                        font-weight: var(--font-weight-bold);
+                        margin-bottom: var(--spacing-large);
+                    }
+
+                    p {
+                        font-size: var(--font-size-default);
+                        margin-bottom: var(--spacing-medium);
+                    }
+                }
+
+                .plans {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(12.25rem, 1fr));
+
+                    gap: var(--spacing-medium);
+
+                    .plan {
+                        display: grid;
+                        grid-template-rows: auto 1fr auto;
+                        height: 16.75rem;
+                        background-color: var(--color-dark-grayish-green);
+                        padding: var(--spacing-default);
+                        border-radius: var(--8px);
+
+                        h3 {
+                            font-size: var(--font-size-default);
+                            font-weight: var(--font-weight-bold);
+                            color: var(--color-white);
+                            text-transform: uppercase;
+                            letter-spacing: 0.094rem;
+                        }
+
+                        ul {
+                            padding-top: var(--spacing-medium);
+
+                            li {
+                                color: var(--color-white);
+                            }
+                        }
+
+                        &:hover {
+                            background-color: var(--color-light-blue);
+                            transition: all 0.3s ease-in-out;
+
+                            a {
+                                color: var(--color-white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #about {
+        background-color: var(--color-white);
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: start;
+            gap: var(--spacing-giant);
+
+            padding-top: var(--spacing-huge);
+            padding-bottom: var(--spacing-huge);
+            min-height: 46.75rem;
+
+            .content {
+                p {
+                    &:nth-child(3) {
+                        margin-bottom: var(--spacing-large);
+                    }
+                }
+            }
+
+            .services-advantages {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas:
+                    "service-advantage-1 service-advantage-2"
+                    "service-advantage-3 graphic";
+                gap: var(--spacing-medium);
+                width: 100%;
+                max-width: 28.625rem;
+
+                .service-advantage {
+                    display: grid;
+                    grid-template-rows: auto 1fr auto;
+                    background-color: var(--color-dark-grayish-green);
+                    padding: 1rem;
+                    border-radius: var(--8px);
+                    min-height: 18.625rem;
+                    width: 13.5625rem;
+                    transition: all 0.3s ease-in-out;
+
+                    h3,
+                    p {
+                        color: var(--color-white);
+                    }
+
+                    h3 {
+                        font-size: var(--font-size-default);
+                        font-weight: var(--font-weight-bold);
+                    }
+
+                    p {
+                        margin-top: var(--spacing-default);
+                    }
+
+                    &:nth-child(1) {
+                        grid-area: service-advantage-1;
+                    }
+
+                    &:nth-child(2) {
+                        grid-area: service-advantage-2;
+                    }
+
+                    &:nth-child(3) {
+                        grid-area: service-advantage-3;
+                    }
+
+                    &:hover {
+                        background-color: var(--color-darkest);
+                        transition: all 0.3s ease-in-out;
+                    }
+                }
+
+                img {
+                    grid-area: graphic;
+                    margin-top: -0.5rem;
+                    margin-left: -0.5rem;
+                }
+            }
+        }
+    }
+
+    #services {
+        .service-right {
+            background-color: var(--color-light-gray);
+        }
+
+        .service-left {
+            background-color: var(--color-white);
+        }
+
+        .container {
+            padding-top: var(--spacing-huge);
+            padding-bottom: var(--spacing-huge);
+
+            .service {
+                h2 {
+                    font-size: var(--font-size-large);
+                    font-weight: var(--font-weight-bold);
+                    margin-bottom: var(--spacing-large);
+                    color: var(--color-darkest);
+                }
+
+                p {
+                    margin-bottom: var(--spacing-medium);
+                }
+
+                ul {
+                    li {
+                        svg {
+                            margin-right: var(--spacing-small);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
